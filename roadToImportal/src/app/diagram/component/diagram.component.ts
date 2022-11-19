@@ -1,7 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 import {HttpClient} from "@angular/common/http";
 import {Observable} from "rxjs";
-import {IApiPlayerData} from "../Api/Model/IApiPlayerData";
+import {IApiPlayerData} from "../api/Model/IApiPlayerData";
 import {IPlayerData} from "../model/IPlayerData";
 
 @Component({
