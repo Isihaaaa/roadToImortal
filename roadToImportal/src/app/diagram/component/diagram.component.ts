@@ -1,8 +1,10 @@
 import {Component, OnInit} from '@angular/core';
 import {HttpClient} from "@angular/common/http";
-import {Observable} from "rxjs";
 import {IApiPlayerData} from "../api/Model/IApiPlayerData";
+
 import {IPlayerData} from "../model/IPlayerData";
+import {ChartConfiguration} from "chart.js";
+
 
 @Component({
   selector: 'app-diagram',
@@ -37,6 +39,32 @@ export class DiagramComponent implements OnInit {
     rank_tier: 0,
   };
   public stringifyPlayer = '';
+  public lineChartData:ChartConfiguration<'line'>['data']= {
+    // ezek a horizpntális vonalon megjelenő labelek hetes bontás esetén a hét napjai. éves bontás esetén a hónapok neve
+    labels: [
+      'January',
+      'February',
+      'March',
+      'April',
+      'May',
+      'June',
+      'July',
+    ],
+    datasets:[{
+      // adott időszakra az mrr pontok
+      data:[65, 59, 80, 81, 56, 55, 40],
+      // a line labelje
+      label: 'Series A',
+      fill: true,
+      borderColor: 'black',
+      backgroundColor: 'rgba(255,0,0,0.3)'
+    }]
+
+  };
+  public lineChartOptions: ChartConfiguration<'line'>['options']= {
+    responsive: true
+  };
+  public lineChartLegend = true;
 
   constructor(private _http: HttpClient) {
   }
@@ -53,5 +81,11 @@ export class DiagramComponent implements OnInit {
       }
       console.log(JSON.stringify(this.player))
     })
+  }
+
+  public getMatches(id: string){
+    //https://api.opendota.com/api/players/{account_id}/matches
+
+
   }
 }

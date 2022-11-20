@@ -2,6 +2,7 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import {DiagramComponent} from "./component/diagram.component";
 import { HttpClientModule } from "@angular/common/http";
+import {NgChartsModule} from "ng2-charts";
 
 
 
@@ -9,7 +10,8 @@ import { HttpClientModule } from "@angular/common/http";
   declarations: [DiagramComponent],
   imports: [
     CommonModule,
-    HttpClientModule
+    HttpClientModule,
+    NgChartsModule
   ]
 })
 export class DiagramModule { }
